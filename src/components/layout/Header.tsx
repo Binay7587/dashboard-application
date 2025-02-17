@@ -1,5 +1,5 @@
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
-import { ChevronDown, LogOut, MenuIcon, Moon, Sun } from 'lucide-react';
+import { ChevronDown, LogOut, MenuIcon } from 'lucide-react';
 import ThemeToggle from '../ThemeToggle';
 
 interface HeaderProps {
