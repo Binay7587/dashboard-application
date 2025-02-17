@@ -1,5 +1,6 @@
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react';
-import { ChevronDown, LogOut, MenuIcon } from 'lucide-react';
+import { ChevronDown, LogOut, MenuIcon, Moon, Sun } from 'lucide-react';
+import ThemeToggle from '../ThemeToggle';
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -20,6 +21,7 @@ const Header = ({ onMenuClick, onLogout }: HeaderProps) => {
       </div>
 
       <div className="flex items-center space-x-4">
+        <ThemeToggle />
         <Menu as="div" className="relative">
           <MenuButton className="flex items-center space-x-2 text-sm font-medium text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg p-2">
             <span className="w-8 h-8 rounded-full border-2 border-black dark:border-white flex items-center justify-center">
