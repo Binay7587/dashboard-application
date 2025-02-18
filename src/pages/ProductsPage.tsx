@@ -59,7 +59,7 @@ export default function ProductsPage() {
 
   useEffect(() => {
     setCurrentPage(1)
-  }, [limit])
+  }, [dSearch])
 
   return (
     <div className='px-4 sm:px-6 lg:px-8'>
