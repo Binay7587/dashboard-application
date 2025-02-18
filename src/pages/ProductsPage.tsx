@@ -5,6 +5,8 @@ import { Product } from "../types/product";
 import { userAxios } from "../utils/axios";
 import { endpoints } from "../utils/endpoints";
 import { getAvailabilityClass } from "../utils/utility";
+import { toast } from "react-toastify";
+import Loading from "../components/Loading";
 
 type ProductsResProps = {
   limit: number;
@@ -14,7 +16,7 @@ type ProductsResProps = {
 }
 
 export default function ProductsPage() {
-  const [skip, setSkip] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [limit, setLimit] = useState<number>(10);
   const [count, setCount] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -23,25 +25,33 @@ export default function ProductsPage() {
 
   const dSearch = useDebounce(search, 300);
 
-  const fetchProducts = () => {
-    userAxios.get<ProductsResProps>(endpoints.product.list({ search: dSearch, skip: (currentPage - 1) * limit, limit }))
-      .then((res) => {
-        setSkip(res.data.skip)
-        setCount(res.data.total)
-        setProducts(res.data.products)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
+  const fetchProducts = async () => {
+    try {
+      setIsLoading(true);
+      const result = await userAxios.get<ProductsResProps>(endpoints.product.list({
+        search: dSearch,
+        skip: (currentPage - 1) * limit,
+        limit
+      }));
+      setCount(result.data.total)
+      setProducts(result.data.products)
+    } catch (error) {
+      console.log(error)
+      toast.error("Failed to fetch products")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   useEffect(() => {
     fetchProducts()
-  }, [skip, dSearch, currentPage, limit])
+  }, [dSearch, currentPage, limit])
 
   useEffect(() => {
     setCurrentPage(1)
   }, [limit])
+
+  if (isLoading) return <Loading />
 
   return (
     <div className='px-4 sm:px-6 lg:px-8'>
@@ -104,7 +114,7 @@ export default function ProductsPage() {
                       products.map((product: Product, index: number) => (
                         <tr key={product.id}>
                           <td className="w-[50px] pl-2 pr-0 text-sm text-gray-500 dark:text-gray-400">
-                            {skip + index + 1}
+                            {(currentPage - 1) * limit + index + 1}
                           </td>
                           <td className="max-w-[200px] py-5 pl-4 pr-3 text-sm sm:pl-0">
                             <div className="flex items-center">
