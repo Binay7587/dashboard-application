@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Layout from "./components/layout/Layout"
 import NoPageFound from "./components/NoPageFound"
 import Dashboard from "./pages/Dashboard"
+import ProductsPage from "./pages/ProductsPage"
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route index element={<Dashboard />} />
-          <Route path="products" element={<div>Products</div>} />
+          <Route path="products" element={<ProductsPage />} />
           <Route path="users" element={<div>Users</div>} />
         </Route>
         <Route path="*" element={<NoPageFound />} />

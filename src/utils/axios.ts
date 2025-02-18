@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 
 const userAxios = axios.create({ baseURL: import.meta.env.VITE_API_BASE_URL });
 
@@ -11,8 +11,8 @@ userAxios.interceptors.request.use(
 );
 
 
-const handleResponse = (response: any) => response.data;
-const handleError = (error: any) => Promise.reject(error.response?.data);
+const handleResponse = (response: AxiosResponse) => response;
+const handleError = (error: AxiosError) => Promise.reject(error.response?.data);
 
 userAxios.interceptors.response.use(handleResponse, handleError);
 
