@@ -1,9 +1,10 @@
 export const getInitialTheme = (): boolean => {
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    return savedTheme === 'dark';
-  }
-  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const isDarkMode = savedTheme ? savedTheme === 'dark' :
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  applyTheme(isDarkMode);
+  return isDarkMode;
 };
 
 export const applyTheme = (isDarkMode: boolean) => {
