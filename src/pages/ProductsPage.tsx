@@ -53,6 +53,11 @@ export default function ProductsPage() {
     }
   }
 
+  const handleLimitChange = (newLimit: number) => {
+    setLimit(newLimit);
+    setCurrentPage(1);
+  };
+
   useEffect(() => {
     fetchProducts()
   }, [dSearch, currentPage, limit])
@@ -76,7 +81,7 @@ export default function ProductsPage() {
         <TableSearch search={search} setSearch={setSearch} />
       </div>
 
-      <PaginatedTable columns={columns} limit={limit} setLimit={setLimit} currentPage={currentPage} setCurrentPage={setCurrentPage} count={count}>
+      <PaginatedTable columns={columns} limit={limit} setLimit={handleLimitChange} currentPage={currentPage} setCurrentPage={setCurrentPage} count={count}>
         {
           isLoading ? <TableSkeleton columns={7} /> : products && products.length > 0 ? <>
             {
