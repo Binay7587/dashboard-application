@@ -102,7 +102,11 @@ export default function UsersPage() {
                         <div className="font-medium text-gray-900 dark:text-white">
                           {user.firstName} {user.lastName}
                         </div>
-                        <div className="mt-1 text-gray-500 dark:text-gray-400 line-clamp-1">{user.email}</div>
+                        <div className="mt-1 text-gray-500 dark:text-gray-400 line-clamp-1">
+                          <a href={`mailto:${user.email}`} className="hover:cursor-pointer">
+                            {user.email}
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </td>
@@ -114,7 +118,11 @@ export default function UsersPage() {
                   </td>
                   <td className="px-3 py-5 text-sm text-gray-500 dark:text-gray-400">{user.username}</td>
                   <td className="px-3 py-5 text-sm text-gray-500 dark:text-gray-400">{user.address.address}</td>
-                  <td className="px-3 py-5 text-sm text-gray-500 dark:text-gray-400">{user.phone}</td>
+                  <td className="px-3 py-5 text-sm text-gray-500 dark:text-gray-400">
+                    <a href={`tel:${user.phone}`} className="hover:cursor-pointer">
+                      {user.phone}
+                    </a>
+                  </td>
                 </tr>
               ))
             }
