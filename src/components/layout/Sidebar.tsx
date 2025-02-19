@@ -1,4 +1,5 @@
 import Navigation from './Navigation';
+import companyLogo from '/vite.svg';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -16,13 +17,12 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
       )}
 
       <div
-        className={`fixed inset-y-0 left-0 z-30 w-64 transform bg-white dark:bg-black transition duration-300 ease-in-out lg:static lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
+        className={`fixed inset-y-0 left-0 z-30 w-64 transform bg-white dark:bg-black transition duration-300 ease-in-out lg:static lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}
       >
         <div className="flex flex-col h-full">
-          <div className="h-16 flex items-center px-4 gap-3">
-            <div className="w-8 h-8 border-2 border-black dark:border-white rounded-lg">
-              {/* TODO: ADD THE LOGO FOR THE COMPANY */}
+          <div className="h-16 flex items-center px-4 gap-3 border-b border-r border-gray-200 dark:border-gray-800">
+            <div className="w-8 h-8 rounded-lg">
+              <img src={companyLogo} alt='company logo' />
             </div>
             <span className="text-black dark:text-white">
               ABC Company

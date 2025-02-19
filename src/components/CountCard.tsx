@@ -1,5 +1,5 @@
 const CountCard = ({ title, count, icon: Icon, isLoading }: { title: string, count: number, icon: React.ElementType, isLoading: boolean }) => (
-  <div className="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg">
+  <div className="bg-white dark:bg-zinc-900 overflow-hidden shadow rounded-lg">
     <div className="p-5">
       <div className="flex items-center">
         <div className="flex-shrink-0">
