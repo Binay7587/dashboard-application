@@ -53,6 +53,10 @@ export default function ProductsPage() {
     }
   }
 
+  const handleProductAdd = () => {
+    toast.warning("This feature is not available yet")
+  }
+
   const handleLimitChange = (newLimit: number) => {
     setLimit(newLimit);
     setCurrentPage(1);
@@ -72,6 +76,7 @@ export default function ProductsPage() {
         <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Products</h1>
         <button
           type="button"
+          onClick={handleProductAdd}
           className="block rounded-md bg-black dark:bg-white px-3 py-2 text-center text-sm font-semibold text-white dark:text-black shadow-sm hover:bg-gray-800 dark:hover:bg-gray-200"
         >
           Add Product

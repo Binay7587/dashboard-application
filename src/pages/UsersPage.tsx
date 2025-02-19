@@ -56,6 +56,10 @@ export default function UsersPage() {
     setCurrentPage(1);
   };
 
+  const handleUserAdd = () => {
+    toast.warning("This feature is not available yet")
+  }
+
   useEffect(() => {
     fetchUsers()
   }, [dSearch, currentPage, limit])
@@ -70,6 +74,7 @@ export default function UsersPage() {
         <h1 className="text-xl font-semibold text-gray-900 dark:text-white">Users</h1>
         <button
           type="button"
+          onClick={handleUserAdd}
           className="block rounded-md bg-black dark:bg-white px-3 py-2 text-center text-sm font-semibold text-white dark:text-black shadow-sm hover:bg-gray-800 dark:hover:bg-gray-200"
         >
           Add User
